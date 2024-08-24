@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, Typography, Stack } from "@mui/material";
 
 const MyForm: React.FC = () => {
   const [formValues, setFormValues] = useState({
@@ -19,29 +19,38 @@ const MyForm: React.FC = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log("Form Data:", formValues);
   };
 
   return (
-    <Box
+    <Stack
       component="form"
       onSubmit={handleSubmit}
+      flex={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      spacing={2}
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 2,
         width: "100%",
         margin: "0 auto",
       }}
     >
-      <Box sx={{
-        display: "flex",
-        flexDirection: "row",
-        gap: 2,
-        width: "100%",
-        margin: "0 auto",
-      }}>
+      <Typography variant="h2">Let's chat!</Typography>
+      <Typography variant="h5" color={"grey"}>
+        Feel free to reach out with me if you're interested in my work, have
+        questions about coding or anything else in between!
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 2,
+          width: "100%",
+          
+          margin: "0 auto",
+        }}
+      >
         <TextField
           label="Name"
           variant="outlined"
@@ -73,10 +82,18 @@ const MyForm: React.FC = () => {
         rows={4}
         required
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{
+          backgroundColor: "#4F3FEC",
+          padding: "10px 20px",
+          borderRadius: "15px",
+        }}
+      >
         Submit
       </Button>
-    </Box>
+    </Stack>
   );
 };
 
